@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Serveur HITEMA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-lg p-10 w-full max-w-xl text-center">
+        <h1 class="text-3xl font-bold text-blue-700 mb-4">Bienvenue sur le serveur HITEMA</h1>
+        <h2 class="text-xl text-gray-700 mb-2">Heure : <span class="font-mono text-blue-500">{{ hours }}</span></h2>
+        <h3 class="text-lg text-gray-700 mb-6">Concepteur : <span class="text-red-600 font-semibold">{{ cname }}</span></h3>
+        <div class="flex flex-col gap-3 items-center">
+            <a href="{% url 'liste_pays' %}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition">Afficher la liste des pays</a>
+            <a href="{% url 'films' %}" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition">Films</a>
+            <a href="{% url 'actors' %}" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition">Actors</a>
+            <button onclick="window.history.back()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-lg shadow transition">Retour</button>
+        </div>
+    </div>
+</body>
+</html>

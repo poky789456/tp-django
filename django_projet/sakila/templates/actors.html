@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Actors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-lg p-10 w-full max-w-xl">
+        <form method="get" class="mb-6 flex">
+            <input type="text" name="q" value="{{ query }}" placeholder="Recherche nom ou prénom..." class="flex-1 border rounded-l px-4 py-2">
+            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r">Rechercher</button>
+        </form>
+        <ul class="divide-y divide-purple-100">
+            {% for actor in actors %}
+                <li class="py-3 px-4 text-gray-700 text-lg">{{ actor.first_name }} {{ actor.last_name }}</li>
+            {% empty %}
+                <li class="py-3 px-4 text-gray-500">Aucun acteur trouvé.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
