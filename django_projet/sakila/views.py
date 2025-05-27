@@ -28,5 +28,5 @@ def actors(request):
 
 def film_detail(request, film_id):
     film = get_object_or_404(Film, pk=film_id)
-    actors = film.actors.all()  # Utilise la relation ManyToMany
+    actors = film.actors.all()
     return render(request, 'film_detail.html', {'film': film, 'actors': actors})
