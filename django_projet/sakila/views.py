@@ -1,8 +1,23 @@
 from django.shortcuts import get_object_or_404, render
 from datetime import datetime
 
-from sakila.models import Actor, Country, Film
+from sakila.models import Actor, Country, Film, User
 from django.db.models import Q
+
+def login(request):
+    error = False
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        try:
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                return render(request, 'banniere.html', {'hours': datetime.now().strftime("%Y-%m-%d - %H:%M:%S"), 'cname': username})
+            else:
+                error = True
+        except User.DoesNotExist:
+            error = True
+    return render(request, 'login.html', {'form': {}, 'error': error})
 
 def status(request):
     h = datetime.now().strftime("%Y-%m-%d - %H:%M:%S")
